@@ -7,6 +7,7 @@ public class Utils {
 	public static int[] RESET_5 = {5,5,5,5,5}; // reset default user input sequence arr
 	public static int[] RESET_6 = {5,5,5,5,5,5}; // reset default user input sequence arr
 	public static int[] RESET_7 = {5,5,5,5,5,5,5}; // reset default user input sequence arr
+	//
 	
 	public static boolean areEqual(int[] arr1, int[] arr2) {
 		if(arr1.length != arr2.length) {
