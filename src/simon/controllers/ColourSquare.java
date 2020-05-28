@@ -1,5 +1,6 @@
 package simon.controllers;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -8,6 +9,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JComponent;
 
+import simon.models.sequences.SequenceGenerator;
 import simon.views.View;
 
 public class ColourSquare extends JComponent implements MouseListener {
@@ -15,12 +17,13 @@ public class ColourSquare extends JComponent implements MouseListener {
 	private Color glowColour;
 	Color mainColour;
 	int id;
-	public View view;
+	public SequenceGenerator in;
 	
-	public ColourSquare(Color colour, int id, View view) {
+	public ColourSquare(Color colour, int id, SequenceGenerator in, View view) {
 		super();
-		this.view = view;
+		this.in=in;
 		this.id = id;
+		view.add(this,BorderLayout.CENTER);
 		this.setPreferredSize(new Dimension(100,100));
 		this.addMouseListener(this);
 		this.colour=colour;
@@ -48,9 +51,9 @@ public class ColourSquare extends JComponent implements MouseListener {
 		unglow();
 		
 		//id which square was clicked and append that to global sequence var in view
-		for(int i = 0; i < this.view.sequenceInput.length; ++i) {
-			if(this.view.sequenceInput[i] == 5) {
-				this.view.sequenceInput[i] = this.id;
+		for(int i = 0; i < this.in.sequenceInput.length; ++i) {
+			if(this.in.sequenceInput[i] == 5) {
+				this.in.sequenceInput[i] = this.id;
 				break;
 			}
 		}
@@ -86,4 +89,5 @@ public class ColourSquare extends JComponent implements MouseListener {
 		colour=mainColour;
 		repaint();
 	}
+	
 }
